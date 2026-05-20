@@ -107,16 +107,29 @@ class PoseService:
     async def _initialize_models(self):
         """Initialize neural network models."""
         try:
-            # Initialize DensePose model
+            # Initialize DensePose model with default config
+            default_config = {
+                'input_channels': 64,
+                'num_body_parts': 24,
+                'num_uv_coordinates': 2,
+                'hidden_channels': [128, 64],
+                'kernel_size': 3,
+                'padding': 1,
+                'dropout_rate': 0.1,
+                'use_deformable_conv': False,
+                'use_fpn': False,
+                'fpn_levels': [2, 3, 4],
+                'output_stride': 4
+            }
             if self.settings.pose_model_path:
-                self.densepose_model = DensePoseHead()
+                self.densepose_model = DensePoseHead(default_config)
                 # Load model weights if path is provided
                 # model_state = torch.load(self.settings.pose_model_path)
                 # self.densepose_model.load_state_dict(model_state)
                 self.logger.info("DensePose model loaded")
             else:
                 self.logger.warning("No pose model path provided, using default model")
-                self.densepose_model = DensePoseHead()
+                self.densepose_model = DensePoseHead(default_config)
             
             # Initialize modality translation
             config = {
