@@ -157,16 +157,19 @@ def setup_exception_handlers(app: FastAPI):
     @app.exception_handler(Exception)
     async def general_exception_handler(request: Request, exc: Exception):
         """Handle general exceptions."""
-        logger.error(f"Unhandled exception on {request.url.path}: {exc}", exc_info=True)
+        import traceback
+        tb = traceback.format_exc()
+        logger.error(f"Unhandled exception on {request.url.path}: {exc}\n{tb}")
         
         return JSONResponse(
             status_code=500,
             content={
                 "error": {
                     "code": 500,
-                    "message": "Internal server error",
+                    "message": str(exc),
                     "type": "internal_error",
-                    "path": str(request.url.path)
+                    "path": str(request.url.path),
+                    "traceback": tb.split('\n')[-10:]
                 }
             }
         )
@@ -175,20 +178,21 @@ def setup_exception_handlers(app: FastAPI):
 def setup_routers(app: FastAPI, settings: Settings):
     """Setup API routers."""
     
-    # Health check router (no prefix)
+    # Health check router with API prefix
     app.include_router(
         health.router,
-        prefix="/health",
+        prefix=settings.api_prefix,  # /api/v1
         tags=["Health"]
     )
     
-    # API routers with prefix
+    # Pose router
     app.include_router(
         pose.router,
         prefix=f"{settings.api_prefix}/pose",
         tags=["Pose Estimation"]
     )
     
+    # Stream router
     app.include_router(
         stream.router,
         prefix=f"{settings.api_prefix}/stream",

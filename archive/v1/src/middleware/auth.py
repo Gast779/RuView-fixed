@@ -228,6 +228,10 @@ class AuthenticationMiddleware(BaseHTTPMiddleware):
         # Skip authentication for these paths
         skip_paths = [
             "/health",
+            "/api/v1/health",
+            "/api/v1/ready",
+            "/api/v1/live",
+            "/api/v1/status",
             "/metrics",
             "/docs",
             "/redoc",
