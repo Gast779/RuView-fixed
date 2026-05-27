@@ -136,7 +136,7 @@ dev = [
     "pre-commit>=3.5.0",
     "bandit>=1.7.0",
     "safety>=2.3.0",
-    "factory-boy>=3.3.0",
+    "factory-boy>=3.3.3",
     "freezegun>=1.2.0",
     "responses>=0.23.0",
 ]
