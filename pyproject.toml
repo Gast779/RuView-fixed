@@ -93,7 +93,7 @@ dependencies = [
     "psutil>=5.9.0",
     
     # HTTP client
-    "httpx>=0.25.0",
+    "httpx>=0.28.1",
     "aiofiles>=23.2.0",
     
     # Validation and serialization

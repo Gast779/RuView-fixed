@@ -12,7 +12,7 @@ pydantic>=1.10.0
 python-jose[cryptography]>=3.3.0
 python-multipart>=0.0.6
 passlib[bcrypt]>=1.7.4
-httpx>=0.24.0
+httpx>=0.28.1
 pydantic-settings>=2.0.0
 
 # Database dependencies
