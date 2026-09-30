@@ -23,7 +23,7 @@ redis>=4.5.0
 
 # CLI dependencies
 click>=8.0.0
-alembic>=1.10.0
+alembic>=1.20.0
 
 # Hardware interface dependencies
 asyncio-mqtt>=0.16.2
