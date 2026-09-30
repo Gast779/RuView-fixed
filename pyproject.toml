@@ -69,7 +69,7 @@ dependencies = [
     # Signal processing
     "scipy>=1.11.0",
     "matplotlib>=3.7.0",
-    "pandas>=2.1.0",
+    "pandas>=2.3.3",
     
     # Networking and hardware
     "scapy>=2.5.0",
