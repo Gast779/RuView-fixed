@@ -16,7 +16,7 @@ httpx>=0.24.0
 pydantic-settings>=2.0.0
 
 # Database dependencies
-sqlalchemy>=2.0.0
+sqlalchemy>=2.0.54
 asyncpg>=0.28.0
 aiosqlite>=0.22.1
 redis>=4.5.0
