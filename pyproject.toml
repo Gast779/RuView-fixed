@@ -56,7 +56,7 @@ dependencies = [
     
     # Redis (optional)
     "redis>=5.0.0",
-    "aioredis>=2.0.0",
+    "aioredis>=2.0.1",
     
     # Neural networks and ML
     "torch>=2.1.0",
