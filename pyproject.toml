@@ -72,7 +72,7 @@ dependencies = [
     "pandas>=2.1.0",
     
     # Networking and hardware
-    "scapy>=2.5.0",
+    "scapy>=2.7.0",
     "pyserial>=3.5",
     "paramiko>=3.3.0",
     
